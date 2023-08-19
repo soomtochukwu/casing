@@ -1,0 +1,66 @@
+<!-- 
+develeoped to help me capitalize
+comments in my solidity code
+ -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>to upper case</title>
+
+	<style type="text/css">
+		input, textarea{
+			display: block;
+		}
+		span{
+			color: green;
+			display: none;
+		}
+		button{
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+	<h2>
+		CHANGE LOWER CASE TO UPPER CASE
+	</h2>
+	<textarea placeholder="lower case" id="data" oninput="upper()" cols="50" rows="5"></textarea>
+
+	<button onclick="upper()">to upper case</button>
+	<button onclick="clears()">clear</button>
+	<span id="span">copied</span>
+
+	<textarea placeholder="upper case" id="target" cols="50" rows="5"></textarea>
+
+	<script type="text/javascript">
+			let
+			data = document.getElementById("data"),
+			target = document.getElementById("target"),
+			span = document.getElementById("span");
+			data.focus();
+
+		function upper() {
+			target.value = data.value.toUpperCase();
+
+			target.select();
+			target.setSelectionRange(0, target.value.length);
+			document.execCommand("copy");
+
+			data.focus();
+			span.style.display = "inline-block";
+			setTimeout(() => {
+				span.style.display = "none";
+			}, 350)
+		}
+		function clears(){
+			data.value = "";
+			data.focus();
+			target.value = "";
+		}
+	</script>
+</body>
+</html>
